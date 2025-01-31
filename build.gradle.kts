@@ -1,9 +1,10 @@
 import java.util.*
 
 plugins {
-    kotlin("multiplatform") version "1.9.23"
-    kotlin("plugin.serialization") version "1.9.23"
-    id("maven-publish")
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlin.serialization)
+
+    id(libs.plugins.vanniktech.publish.get().pluginId) version libs.versions.vanniktech.publish
 }
 
 allprojects {
@@ -22,27 +23,27 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.3")
+                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.kotlinx.serialization.core)
 
-                api("io.ktor:ktor-client-core:2.3.13")
-                api("io.ktor:ktor-client-serialization:2.3.13")
-                api("io.ktor:ktor-client-content-negotiation:2.3.13")
-                api("io.ktor:ktor-serialization-kotlinx-json:2.3.13")
-                api("org.jetbrains.kotlinx:kotlinx-datetime:0.4.1")
+                api(libs.ktor.client.core)
+                api(libs.ktor.client.serialization)
+                api(libs.ktor.client.content.negotiation)
+                api(libs.ktor.serialization.kotlinx.json)
+                api(libs.kotlinx.datetime)
             }
         }
 
         commonTest.dependencies {
-            implementation("org.jetbrains.kotlin:kotlin-test-common")
-            implementation("io.ktor:ktor-client-okhttp:2.3.13")
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1")
+            implementation(libs.kotlin.test.common)
+            implementation(libs.ktor.client.okhttp)
+            implementation(libs.kotlinx.coroutines.test)
         }
 
         jvmMain {
             dependencies {
-                implementation(kotlin("stdlib-jdk8"))
-                implementation("io.ktor:ktor-client-cio-jvm:2.3.13")
+                implementation(libs.kotlin.stdlib.jdk8)
+                implementation(libs.ktor.client.cio.jvm)
 
                 // AWS SDK
                 implementation(awssdk.services.s3)
@@ -51,7 +52,7 @@ kotlin {
 
         jvmTest {
             dependencies {
-                implementation(kotlin("test-junit"))
+                implementation(libs.kotlin.test.junit)
             }
         }
     }
