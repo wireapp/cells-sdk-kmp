@@ -2,16 +2,17 @@ name: Publish To Maven Central
 
 on:
   push:
-    branches:
-      - dev
-#    tags:
-#      - '**'
+#    branches:
+#      - dev
+    tags:
+      - 'v0.1*'
 
 jobs:
   publish:
 
     runs-on: ubuntu-latest
-    if:  ${{ startsWith(github.event.release.tag_name, 'v0.1') }}
+    if: github.repository == 'wireapp/cells-sdk-kmp'
+
 
     steps:
       - name: Checkout
