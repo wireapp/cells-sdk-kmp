@@ -81,8 +81,8 @@ tasks.withType<Test> {
     val properties = Properties().apply {
         rootProject.file("local.properties").reader().use(::load)
     }
-    val serverURL = properties["test.targer_server_url"] as String
-    val pat = properties["test.targer_server_pat"] as String
+    val serverURL = properties["test.targer_server_url"] ?: ""
+    val pat = properties["test.targer_server_pat"] ?: ""
     environment("TARGET_SERVER_URL", serverURL)
     environment("TARGET_SERVER_PAT", pat)
 }
