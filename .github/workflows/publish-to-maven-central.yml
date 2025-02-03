@@ -2,10 +2,8 @@ name: Publish To Maven Central
 
 on:
   push:
-    branches:
-      - dev
     tags:
-      - 'v0.1*'
+      - 'v0.1.**'
 
 jobs:
   publish:
