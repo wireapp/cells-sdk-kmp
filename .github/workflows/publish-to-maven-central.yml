@@ -29,6 +29,10 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
+      # Simply add the expected local.properties file
+      - name: Configure Gradle
+        run: touch ./local.properties
+
       - name: Publish
         run: ./gradlew publishToMavenLocal
 
