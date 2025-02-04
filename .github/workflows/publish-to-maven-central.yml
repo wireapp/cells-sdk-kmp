@@ -2,9 +2,12 @@ name: Publish To Maven Central
 
 on:
   push:
-    tags:
+# Temp
+    branches:
+      - dev
+#    tags:
     ## TODO: make this more robust. Depend on a release? See https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows
-      - 'v0.1.**'
+#      - 'v0.1.**'
 
 jobs:
   publish:
@@ -16,7 +19,8 @@ jobs:
     steps:
       - name: Verify environment
         run: |
-          echo "Environment variable TEST_VAR: ${{ vars.SIGN_ARTIFACTS }}"
+          echo "Environment variable SIGN_ARTIFACTS: ${{ vars.SIGN_ARTIFACTS }}"
+          echo "Environment variable TEST_VAR: ${{ vars.TEST_VAR }}"
           echo " Test echo secret var: ${{ secrets.SONATYPE_USERNAME }}"
 
       - name: Checkout
