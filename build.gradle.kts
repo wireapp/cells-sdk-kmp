@@ -1,9 +1,6 @@
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinMultiplatform
-import java.nio.charset.StandardCharsets
-import java.util.Base64
 import java.util.Properties
-import org.jetbrains.kotlin.util.DummyLogger.warning
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -13,7 +10,7 @@ plugins {
 }
 
 allprojects {
-    version = "0.1.1-dev"
+    version = "0.1.1-alpha00"
     group = "com.wire"
 }
 
