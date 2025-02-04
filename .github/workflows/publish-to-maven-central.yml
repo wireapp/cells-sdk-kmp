@@ -3,17 +3,17 @@ name: Publish To Maven Central
 on:
   push:
 # Temp
-    branches:
-      - dev
-#    tags:
-    ## TODO: make this more robust. Depend on a release? See https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows
-#      - 'v0.1.**'
+#    branches:
+#      - dev
+    tags:      ## TODO: make this more robust. Depend on a release? See https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows
+      - 'v0.1.**'
 
 jobs:
   publish:
 
     runs-on: ubuntu-latest
-    environment: maven-central-publication # reference our environment
+    # Define which environment we use to inject variables, see github repo >> settings >> environments
+    environment: maven-central-publication
     if: github.repository == 'wireapp/cells-sdk-kmp'
 
     steps:
