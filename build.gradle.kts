@@ -1,6 +1,9 @@
-import java.util.*
-import com.vanniktech.maven.publish.KotlinMultiplatform
 import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.KotlinMultiplatform
+import java.nio.charset.StandardCharsets
+import java.util.Base64
+import java.util.Properties
+import org.jetbrains.kotlin.util.DummyLogger.warning
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -77,6 +80,23 @@ mavenPublishing {
     ))
 }
 
+signing {
+    val b64Key = System.getenv("BASE64_PGP_KEY") ?: ""
+    if (b64Key.isNotEmpty()){
+        val pgpKey = String(Base64.getDecoder().decode(b64Key), StandardCharsets.UTF_8)
+        useInMemoryPgpKeys(pgpKey, System.getenv("ORG_GRADLE_PROJECT_signingInMemoryKeyPassword"))
+    } else {
+        warning("PGP_KEY_BASE64 is not set, cannot sign.")
+    }
+}
+
+// We only sign artifacts when explicitly required
+tasks.withType<Sign>().configureEach {
+    if (System.getenv("SIGN_ARTIFACTS") != "true") { // e.g. not in Github Action runner
+        enabled = false
+    }
+}
+
 tasks.withType<Test> {
     val properties = Properties().apply {
         rootProject.file("local.properties").reader().use(::load)
@@ -86,15 +106,3 @@ tasks.withType<Test> {
     environment("TARGET_SERVER_URL", serverURL)
     environment("TARGET_SERVER_PAT", pat)
 }
-
-// Temporary disable signature to test published artifacts locally
-//tasks.withType<Sign>().configureEach {
-//    enabled = false
-// }
-// Allows skipping signing jars published to 'MavenLocal' repository
-tasks.withType<Sign>().configureEach {
-    if (System.getenv("CI") == null) { // i.e. not in Github Action runner
-        enabled = false
-    }
-}
-
