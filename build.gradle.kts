@@ -80,21 +80,21 @@ mavenPublishing {
     ))
 }
 
-signing {
-    val b64Key = System.getenv("BASE64_PGP_KEY") ?: ""
-    val signing = System.getenv("SIGN_ARTIFACTS") ?: ""
-
-    warning("=== Env variable, signing: $signing")
-
-    if (b64Key.isNotEmpty()){
-        warning("=== Env variable, b6pk: ${b64Key.subSequence(0,8)}...")
-
-        val pgpKey = String(Base64.getDecoder().decode(b64Key), StandardCharsets.UTF_8)
-        useInMemoryPgpKeys(pgpKey, System.getenv("ORG_GRADLE_PROJECT_signingInMemoryKeyPassword"))
-    } else {
-        warning("BASE64_PGP_KEY is not set, cannot sign.")
-    }
-}
+//signing {
+//    val b64Key = System.getenv("BASE64_PGP_KEY") ?: ""
+//    val signing = System.getenv("SIGN_ARTIFACTS") ?: ""
+//
+//    warning("=== Env variable, signing: $signing")
+//
+//    if (b64Key.isNotEmpty()){
+//        warning("=== Env variable, b6pk: ${b64Key.subSequence(0,8)}...")
+//
+//        val pgpKey = String(Base64.getDecoder().decode(b64Key), StandardCharsets.UTF_8)
+//        useInMemoryPgpKeys(pgpKey, System.getenv("ORG_GRADLE_PROJECT_signingInMemoryKeyPassword"))
+//    } else {
+//        warning("BASE64_PGP_KEY is not set, cannot sign.")
+//    }
+//}
 
 // We only sign artifacts when explicitly required
 tasks.withType<Sign>().configureEach {
