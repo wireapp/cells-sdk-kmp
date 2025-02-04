@@ -10,6 +10,7 @@ jobs:
   publish:
 
     runs-on: ubuntu-latest
+    environment: maven-central-publication # reference our environment
     if: github.repository == 'wireapp/cells-sdk-kmp'
 
     steps:
