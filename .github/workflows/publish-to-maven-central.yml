@@ -17,11 +17,11 @@ jobs:
     if: github.repository == 'wireapp/cells-sdk-kmp'
 
     steps:
-      - name: Verify environment
-        run: |
-          echo "Environment variable SIGN_ARTIFACTS: ${{ vars.SIGN_ARTIFACTS }}"
-          echo "Environment variable TEST_VAR: ${{ vars.TEST_VAR }}"
-          echo " Test echo secret var: ${{ secrets.SONATYPE_USERNAME }}"
+#      - name: Verify environment
+#        run: |
+#          echo "Environment variable SIGN_ARTIFACTS: ${{ vars.SIGN_ARTIFACTS }}"
+#          echo "Environment variable TEST_VAR: ${{ vars.TEST_VAR }}"
+#          echo " Test echo secret var: ${{ secrets.SONATYPE_USERNAME }}"
 
       - name: Checkout
         uses: actions/checkout@v4
