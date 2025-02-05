@@ -8,7 +8,7 @@ plugins {
 }
 
 allprojects {
-    version = "0.1.1-alpha00"
+    version = "0.1.1-alpha01"
     group = "com.wire"
 }
 
