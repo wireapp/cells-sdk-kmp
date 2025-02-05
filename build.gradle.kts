@@ -15,10 +15,12 @@ allprojects {
 repositories {
     mavenLocal()
     mavenCentral()
+    google()
 }
 
 kotlin {
     jvm()
+    iosX64()
 
     sourceSets {
         commonMain {
@@ -53,6 +55,18 @@ kotlin {
         jvmTest {
             dependencies {
                 implementation(libs.kotlin.test.junit)
+            }
+        }
+
+        appleMain {
+            dependencies {
+                implementation(libs.ktor.iosHttp)
+            }
+        }
+
+        appleTest {
+            dependencies {
+                implementation(libs.ktor.iosHttp)
             }
         }
     }
