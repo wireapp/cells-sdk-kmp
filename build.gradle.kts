@@ -1,5 +1,3 @@
-import com.vanniktech.maven.publish.JavadocJar
-import com.vanniktech.maven.publish.KotlinMultiplatform
 import java.util.Properties
 
 plugins {
@@ -60,43 +58,22 @@ kotlin {
     }
 }
 
-mavenPublishing {
-    // sources publishing is always enabled by the Kotlin Multiplatform plugin
-    configure(KotlinMultiplatform(
-        // configures the -javadoc artifact, possible values:
-        // - `JavadocJar.None()` don't publish this artifact
-        // - `JavadocJar.Empty()` publish an emprt jar
-        // - `JavadocJar.Dokka("dokkaHtml")` when using Kotlin with Dokka, where `dokkaHtml` is the name of the Dokka task that should be used as input
-        // javadocJar = JavadocJar.Dokka("dokkaHtml"),
-        javadocJar = JavadocJar.Empty(),
-        // whether to publish a sources jar
-        sourcesJar = true,
-        // configure which Android library variants to publish if this project has an Android target
-        // defaults to "release" when using the main plugin and nothing for the base plugin
-        androidVariantsToPublish = listOf("debug", "release"),
-    ))
-}
-
-//signing {
-//    val b64Key = System.getenv("BASE64_PGP_KEY") ?: ""
-//    val signing = System.getenv("SIGN_ARTIFACTS") ?: ""
-//
-//    warning("=== Env variable, signing: $signing")
-//
-//    if (b64Key.isNotEmpty()){
-//        warning("=== Env variable, b6pk: ${b64Key.subSequence(0,8)}...")
-//
-//        val pgpKey = String(Base64.getDecoder().decode(b64Key), StandardCharsets.UTF_8)
-//        useInMemoryPgpKeys(pgpKey, System.getenv("ORG_GRADLE_PROJECT_signingInMemoryKeyPassword"))
-//    } else {
-//        warning("BASE64_PGP_KEY is not set, cannot sign.")
-//    }
-//}
-
 // We only sign artifacts when explicitly required
 tasks.withType<Sign>().configureEach {
     if (System.getenv("SIGN_ARTIFACTS") != "true") { // e.g. not in Github Action runner
         enabled = false
+    }
+}
+
+// More info in the manifest for JVM jars
+tasks.withType<Jar>().configureEach {
+    manifest {
+        attributes(
+            "Implementation-Title" to project.name,
+            "Implementation-Version" to project.version,
+            "Implementation-Vendor" to "Wire Swiss GmbH",
+            "Built-JDK" to System.getProperty("java.version")
+        )
     }
 }
 
@@ -109,3 +86,21 @@ tasks.withType<Test> {
     environment("TARGET_SERVER_URL", serverURL)
     environment("TARGET_SERVER_PAT", pat)
 }
+
+// Useless for now
+//mavenPublishing {
+//    // sources publishing is always enabled by the Kotlin Multiplatform plugin
+//    configure(KotlinMultiplatform(
+//        // configures the -javadoc artifact, possible values:
+//        // - `JavadocJar.None()` don't publish this artifact
+//        // - `JavadocJar.Empty()` publish an emprt jar
+//        // - `JavadocJar.Dokka("dokkaHtml")` when using Kotlin with Dokka, where `dokkaHtml` is the name of the Dokka task that should be used as input
+//        // javadocJar = JavadocJar.Dokka("dokkaHtml"),
+//        javadocJar = JavadocJar.Empty(),
+//        // whether to publish a sources jar
+//        sourcesJar = true,
+//        // configure which Android library variants to publish if this project has an Android target
+//        // defaults to "release" when using the main plugin and nothing for the base plugin
+//        androidVariantsToPublish = listOf("debug", "release"),
+//    ))
+//}
