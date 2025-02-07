@@ -33,7 +33,7 @@ class TestZero {
 
         val name = "test-kotlin-kmm-${unique()}.txt"
         val newPath = "common-files/$name"
-        val apiInstance = NodeServiceApi("$serverUrl/a", getMyHttpClient(pat))
+        val apiInstance = NodeServiceApi("$serverUrl/v2", getMyHttpClient(pat))
 
         try {
             val q1 = RestCreateRequest(
