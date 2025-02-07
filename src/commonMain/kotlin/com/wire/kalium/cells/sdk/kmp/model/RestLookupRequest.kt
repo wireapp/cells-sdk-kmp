@@ -15,6 +15,7 @@
 
 package com.wire.kalium.cells.sdk.kmp.model
 
+import com.wire.kalium.cells.sdk.kmp.model.RestFlag
 import com.wire.kalium.cells.sdk.kmp.model.RestNodeLocators
 import com.wire.kalium.cells.sdk.kmp.model.TreeQuery
 
@@ -25,17 +26,19 @@ import kotlinx.serialization.encoding.*
 /**
  * 
  *
+ * @param flags 
  * @param limit 
  * @param locators 
  * @param offset 
  * @param query 
  * @param sortDirDesc 
  * @param sortField 
- * @param statFlags 
  */
 @Serializable
 
 data class RestLookupRequest (
+
+    @SerialName(value = "Flags") val flags: kotlin.collections.List<RestFlag>? = null,
 
     @SerialName(value = "Limit") val limit: kotlin.String? = null,
 
@@ -47,9 +50,7 @@ data class RestLookupRequest (
 
     @SerialName(value = "SortDirDesc") val sortDirDesc: kotlin.Boolean? = null,
 
-    @SerialName(value = "SortField") val sortField: kotlin.String? = null,
-
-    @SerialName(value = "StatFlags") val statFlags: kotlin.collections.List<kotlin.Long>? = null
+    @SerialName(value = "SortField") val sortField: kotlin.String? = null
 
 ) {
 

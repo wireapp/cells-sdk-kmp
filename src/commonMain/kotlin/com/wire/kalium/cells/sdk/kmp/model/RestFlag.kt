@@ -21,19 +21,28 @@ import kotlinx.serialization.*
 /**
  * 
  *
- * Values: VersionsAll,VersionsDraft,VersionsPublished
+ * Values: WithMetaDefaults,WithMetaCoreOnly,WithMetaNone,WithVersionsAll,WithVersionsDraft,WithVersionsPublished
  */
 @Serializable
-enum class RestVersionsTypes(val value: kotlin.String) {
+enum class RestFlag(val value: kotlin.String) {
 
-    @SerialName(value = "VersionsAll")
-    VersionsAll("VersionsAll"),
+    @SerialName(value = "WithMetaDefaults")
+    WithMetaDefaults("WithMetaDefaults"),
 
-    @SerialName(value = "VersionsDraft")
-    VersionsDraft("VersionsDraft"),
+    @SerialName(value = "WithMetaCoreOnly")
+    WithMetaCoreOnly("WithMetaCoreOnly"),
 
-    @SerialName(value = "VersionsPublished")
-    VersionsPublished("VersionsPublished");
+    @SerialName(value = "WithMetaNone")
+    WithMetaNone("WithMetaNone"),
+
+    @SerialName(value = "WithVersionsAll")
+    WithVersionsAll("WithVersionsAll"),
+
+    @SerialName(value = "WithVersionsDraft")
+    WithVersionsDraft("WithVersionsDraft"),
+
+    @SerialName(value = "WithVersionsPublished")
+    WithVersionsPublished("WithVersionsPublished");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -48,12 +57,12 @@ enum class RestVersionsTypes(val value: kotlin.String) {
         /**
          * Converts the provided [data] to a [String] on success, null otherwise.
          */
-        fun encode(data: kotlin.Any?): kotlin.String? = if (data is RestVersionsTypes) "$data" else null
+        fun encode(data: kotlin.Any?): kotlin.String? = if (data is RestFlag) "$data" else null
 
         /**
-         * Returns a valid [RestVersionsTypes] for [data], null otherwise.
+         * Returns a valid [RestFlag] for [data], null otherwise.
          */
-        fun decode(data: kotlin.Any?): RestVersionsTypes? = data?.let {
+        fun decode(data: kotlin.Any?): RestFlag? = data?.let {
           val normalizedData = "$it".lowercase()
           values().firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()

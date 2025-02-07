@@ -24,6 +24,7 @@ import kotlinx.serialization.encoding.*
  * 
  *
  * @param versionId 
+ * @param contentHash 
  * @param description 
  * @param draft 
  * @param etag 
@@ -38,6 +39,8 @@ import kotlinx.serialization.encoding.*
 data class RestVersion (
 
     @SerialName(value = "VersionId") @Required val versionId: kotlin.String,
+
+    @SerialName(value = "ContentHash") val contentHash: kotlin.String? = null,
 
     @SerialName(value = "Description") val description: kotlin.String? = null,
 

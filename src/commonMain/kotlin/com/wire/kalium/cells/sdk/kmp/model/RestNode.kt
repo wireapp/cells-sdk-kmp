@@ -27,6 +27,7 @@ import com.wire.kalium.cells.sdk.kmp.model.RestLockInfo
 import com.wire.kalium.cells.sdk.kmp.model.RestMode
 import com.wire.kalium.cells.sdk.kmp.model.RestShareLink
 import com.wire.kalium.cells.sdk.kmp.model.RestUserMeta
+import com.wire.kalium.cells.sdk.kmp.model.RestVersion
 import com.wire.kalium.cells.sdk.kmp.model.RestVersionMeta
 import com.wire.kalium.cells.sdk.kmp.model.TreeNodeType
 
@@ -40,9 +41,9 @@ import kotlinx.serialization.encoding.*
  * @param path 
  * @param uuid 
  * @param activities 
+ * @param contentHash 
  * @param contentLock 
  * @param contentType 
- * @param contentsHash 
  * @param contextWorkspace 
  * @param dataSourceFeatures 
  * @param folderMeta 
@@ -63,6 +64,7 @@ import kotlinx.serialization.encoding.*
  * @param type 
  * @param userMetadata 
  * @param versionMeta 
+ * @param versions 
  */
 @Serializable
 
@@ -74,11 +76,11 @@ data class RestNode (
 
     @SerialName(value = "Activities") val activities: kotlin.collections.List<ActivityObject>? = null,
 
+    @SerialName(value = "ContentHash") val contentHash: kotlin.String? = null,
+
     @SerialName(value = "ContentLock") val contentLock: RestLockInfo? = null,
 
     @SerialName(value = "ContentType") val contentType: kotlin.String? = null,
-
-    @SerialName(value = "ContentsHash") val contentsHash: kotlin.String? = null,
 
     @SerialName(value = "ContextWorkspace") val contextWorkspace: RestContextWorkspace? = null,
 
@@ -119,7 +121,9 @@ data class RestNode (
 
     @SerialName(value = "UserMetadata") val userMetadata: kotlin.collections.List<RestUserMeta>? = null,
 
-    @SerialName(value = "VersionMeta") val versionMeta: RestVersionMeta? = null
+    @SerialName(value = "VersionMeta") val versionMeta: RestVersionMeta? = null,
+
+    @SerialName(value = "Versions") val versions: kotlin.collections.List<RestVersion>? = null
 
 ) {
 
