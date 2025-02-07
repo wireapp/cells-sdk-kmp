@@ -8,7 +8,7 @@ plugins {
 }
 
 allprojects {
-    version = "0.1.1-alpha02"
+    version = (project.findProperty("VERSION_NAME") as? String) ?: "0.1.1-dev"
     group = "com.wire"
 }
 

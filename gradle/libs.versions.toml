@@ -1,21 +1,19 @@
 [versions]
 
+vanniktech-publish = "0.30.0"
+
 kotlin = "1.9.23"
 kotlinx-coroutines = "1.8.1"
 kotlinx-serialization = "1.6.3"
 
-vanniktech-publish = "0.30.0"
-
 ktor = "2.3.13"
 kotlinx-datetime = "0.4.1"
 
-aws-sdk = "2.20.30"
-
 [plugins]
+
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-#maven-publish = { id = "maven-publish" }
-# simple publication in Sonatype repo
+# Easy publication in Sonatype repo
 vanniktech-publish = { id = "com.vanniktech.maven.publish", version.ref = "vanniktech-publish" }
 
 [libraries]
@@ -36,16 +34,15 @@ ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-client-cio-jvm = { module = "io.ktor:ktor-client-cio-jvm", version.ref = "ktor" }
 
-
 ## iOS specific deps
 ktor-iosHttp = { module = "io.ktor:ktor-client-ios", version.ref = "ktor" }
 
 #aws-sdk-s3 = { module = "software.amazon.awssdk:s3", version.ref = "aws-sdk" }
 
-[bundles]
-ktor = [
-    "ktor-client-core",
-    "ktor-client-serialization",
-    "ktor-client-content-negotiation",
-    "ktor-serialization-kotlinx-json"
-]
+#[bundles]
+#ktor = [
+#    "ktor-client-core",
+#    "ktor-client-serialization",
+#    "ktor-client-content-negotiation",
+#    "ktor-serialization-kotlinx-json"
+#]
