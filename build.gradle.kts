@@ -20,7 +20,11 @@ repositories {
 
 kotlin {
     jvm()
-    iosX64()
+    // FIXME ugly trick to enable both local gradle build and release github action.
+    //  Do this more cleanly
+    if (System.getenv("SIGN_ARTIFACTS") == "true") {
+        iosX64()
+    }
 
     sourceSets {
         commonMain {
