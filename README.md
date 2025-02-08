@@ -24,6 +24,6 @@ We provide a few unit test to showcase the use of the API.
 To run them, simply define your target server URL and a PAT for a user that has access in RW to a workspace that has versioning enabled like this:
 
 ```properties
-test.targer_server_url=
-test.targer_server_pat=
+test.target_server_url=
+test.target_server_pat=
 ```

@@ -29,20 +29,19 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation(libs.kotlinx.coroutines.core)
-                implementation(libs.kotlinx.serialization.core)
-
                 api(libs.ktor.client.core)
                 api(libs.ktor.client.serialization)
                 api(libs.ktor.client.content.negotiation)
                 api(libs.ktor.serialization.kotlinx.json)
                 api(libs.kotlinx.datetime)
+
+                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.kotlinx.serialization.core)
             }
         }
 
         commonTest.dependencies {
             implementation(libs.kotlin.test.common)
-            implementation(libs.ktor.client.okhttp)
             implementation(libs.kotlinx.coroutines.test)
         }
 
@@ -58,6 +57,7 @@ kotlin {
 
         jvmTest {
             dependencies {
+                implementation(libs.ktor.client.okhttp)
                 implementation(libs.kotlin.test.junit)
             }
         }
@@ -99,8 +99,8 @@ tasks.withType<Test> {
     val properties = Properties().apply {
         rootProject.file("local.properties").reader().use(::load)
     }
-    val serverURL = properties["test.targer_server_url"] ?: ""
-    val pat = properties["test.targer_server_pat"] ?: ""
+    val serverURL = properties["test.target_server_url"] ?: ""
+    val pat = properties["test.target_server_pat"] ?: ""
     environment("TARGET_SERVER_URL", serverURL)
     environment("TARGET_SERVER_PAT", pat)
 }
