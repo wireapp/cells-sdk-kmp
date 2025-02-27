@@ -3,8 +3,7 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.serialization)
-
-    id(libs.plugins.vanniktech.publish.get().pluginId) version libs.versions.vanniktech.publish
+    alias(libs.plugins.maven.publish)
 }
 
 allprojects {
