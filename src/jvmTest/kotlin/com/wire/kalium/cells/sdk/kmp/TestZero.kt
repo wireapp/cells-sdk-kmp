@@ -7,6 +7,7 @@ import com.wire.kalium.cells.sdk.kmp.model.RestCreateRequest
 import com.wire.kalium.cells.sdk.kmp.model.RestNodeLocator
 import com.wire.kalium.cells.sdk.kmp.model.RestNodeLocators
 import com.wire.kalium.cells.sdk.kmp.model.TreeNodeType
+import com.wire.kalium.cells.sdk.kmp.model.TreeQuery
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
@@ -58,6 +59,13 @@ class TestZero {
             val r2 = apiInstance.lookup(q2)
             assertTrue(r2.success, "lookup node at $newPath failed, status: ${r2.response.status}")
             assertTrue(r2.body().nodes?.isNotEmpty() ?: false)
+
+            val newPath = "common-files/$name"
+            val newPath2 = "common-files/$name"
+            val newPath3 = "common-files/$name"
+            val q3 = RestLookupRequest(
+                locators = RestNodeLocators(listOf(RestNodeLocator(path = newPath), RestNodeLocator(path = newPath2), RestNodeLocator(path = newPath3), )),
+            )
 
             var found = false
             var foundUuid: String? = null

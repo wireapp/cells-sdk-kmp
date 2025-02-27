@@ -37,6 +37,7 @@ suspend fun putS3Object( serverUrl: String, pat: String, objectKey: String) {
     }
 
     S3Client {
+
         region = DEFAULT_S3_REGION_NAME
         credentialsProvider = StaticCredentialsProvider(creds)
         endpointUrl = Url.parse(serverUrl)
