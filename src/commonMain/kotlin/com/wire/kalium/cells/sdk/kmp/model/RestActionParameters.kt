@@ -16,6 +16,9 @@
 package com.wire.kalium.cells.sdk.kmp.model
 
 import com.wire.kalium.cells.sdk.kmp.model.JobsTaskStatus
+import com.wire.kalium.cells.sdk.kmp.model.RestActionOptionsCopyMove
+import com.wire.kalium.cells.sdk.kmp.model.RestActionOptionsDelete
+import com.wire.kalium.cells.sdk.kmp.model.RestActionOptionsExtractCompress
 import com.wire.kalium.cells.sdk.kmp.model.RestNodeLocator
 
 import kotlinx.serialization.*
@@ -27,10 +30,12 @@ import kotlinx.serialization.encoding.*
  *
  * @param awaitStatus 
  * @param awaitTimeout 
+ * @param copyMoveOptions 
+ * @param deleteOptions 
+ * @param extractCompressOptions 
  * @param jsonParameters 
  * @param nodes 
  * @param selectionUuid 
- * @param targetNode 
  */
 @Serializable
 
@@ -40,13 +45,17 @@ data class RestActionParameters (
 
     @SerialName(value = "AwaitTimeout") val awaitTimeout: kotlin.String? = null,
 
+    @SerialName(value = "CopyMoveOptions") val copyMoveOptions: RestActionOptionsCopyMove? = null,
+
+    @SerialName(value = "DeleteOptions") val deleteOptions: RestActionOptionsDelete? = null,
+
+    @SerialName(value = "ExtractCompressOptions") val extractCompressOptions: RestActionOptionsExtractCompress? = null,
+
     @SerialName(value = "JsonParameters") val jsonParameters: kotlin.String? = null,
 
     @SerialName(value = "Nodes") val nodes: kotlin.collections.List<RestNodeLocator>? = null,
 
-    @SerialName(value = "SelectionUuid") val selectionUuid: kotlin.String? = null,
-
-    @SerialName(value = "TargetNode") val targetNode: RestNodeLocator? = null
+    @SerialName(value = "SelectionUuid") val selectionUuid: kotlin.String? = null
 
 ) {
 
