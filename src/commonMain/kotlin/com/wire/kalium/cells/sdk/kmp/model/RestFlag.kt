@@ -21,7 +21,7 @@ import kotlinx.serialization.*
 /**
  * 
  *
- * Values: WithMetaDefaults,WithMetaCoreOnly,WithMetaNone,WithVersionsAll,WithVersionsDraft,WithVersionsPublished
+ * Values: WithMetaDefaults,WithMetaCoreOnly,WithMetaNone,WithVersionsAll,WithVersionsDraft,WithVersionsPublished,WithPreSignedURLs
  */
 @Serializable
 enum class RestFlag(val value: kotlin.String) {
@@ -42,7 +42,10 @@ enum class RestFlag(val value: kotlin.String) {
     WithVersionsDraft("WithVersionsDraft"),
 
     @SerialName(value = "WithVersionsPublished")
-    WithVersionsPublished("WithVersionsPublished");
+    WithVersionsPublished("WithVersionsPublished"),
+
+    @SerialName(value = "WithPreSignedURLs")
+    WithPreSignedURLs("WithPreSignedURLs");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use
