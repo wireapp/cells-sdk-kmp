@@ -25,6 +25,7 @@ import com.wire.kalium.cells.sdk.kmp.model.RestImageMeta
 import com.wire.kalium.cells.sdk.kmp.model.RestJsonMeta
 import com.wire.kalium.cells.sdk.kmp.model.RestLockInfo
 import com.wire.kalium.cells.sdk.kmp.model.RestMode
+import com.wire.kalium.cells.sdk.kmp.model.RestPreSignedURL
 import com.wire.kalium.cells.sdk.kmp.model.RestShareLink
 import com.wire.kalium.cells.sdk.kmp.model.RestUserMeta
 import com.wire.kalium.cells.sdk.kmp.model.RestVersion
@@ -56,6 +57,7 @@ import kotlinx.serialization.encoding.*
  * @param metadata 
  * @param mode 
  * @param modified Date instead of TS ?
+ * @param preSignedGET 
  * @param previews 
  * @param shares 
  * @param propertySize 
@@ -106,6 +108,8 @@ data class RestNode (
 
     /* Date instead of TS ? */
     @SerialName(value = "Modified") val modified: kotlin.String? = null,
+
+    @SerialName(value = "PreSignedGET") val preSignedGET: RestPreSignedURL? = null,
 
     @SerialName(value = "Previews") val previews: kotlin.collections.List<RestFilePreview>? = null,
 

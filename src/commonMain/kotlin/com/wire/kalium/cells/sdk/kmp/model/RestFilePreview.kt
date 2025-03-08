@@ -15,6 +15,7 @@
 
 package com.wire.kalium.cells.sdk.kmp.model
 
+import com.wire.kalium.cells.sdk.kmp.model.RestPreSignedURL
 
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
@@ -27,8 +28,8 @@ import kotlinx.serialization.encoding.*
  * @param contentType 
  * @param dimension 
  * @param key 
+ * @param preSignedGET 
  * @param processing 
- * @param url 
  */
 @Serializable
 
@@ -42,9 +43,9 @@ data class RestFilePreview (
 
     @SerialName(value = "Key") val key: kotlin.String? = null,
 
-    @SerialName(value = "Processing") val processing: kotlin.Boolean? = null,
+    @SerialName(value = "PreSignedGET") val preSignedGET: RestPreSignedURL? = null,
 
-    @SerialName(value = "Url") val url: kotlin.String? = null
+    @SerialName(value = "Processing") val processing: kotlin.Boolean? = null
 
 ) {
 
