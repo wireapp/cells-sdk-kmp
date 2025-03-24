@@ -13,7 +13,6 @@ import okhttp3.OkHttpClient
 import java.io.File
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
-import javax.net.ssl.HostnameVerifier
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
@@ -27,7 +26,7 @@ const val DEFAULT_BUCKET_NAME = "io"
 suspend fun putS3Object( serverUrl: String, pat: String, objectKey: String) {
     val metadataVal = mutableMapOf<String, String>()
     // metadataVal["myVal"] = "test"
-    val creds = PatCredentials(pat, DEFAULT_GATEWAY_SECRET)
+    val credentials = PatCredentials(pat, DEFAULT_GATEWAY_SECRET)
 
   val request = PutObjectRequest {
         bucket = DEFAULT_BUCKET_NAME
@@ -37,12 +36,10 @@ suspend fun putS3Object( serverUrl: String, pat: String, objectKey: String) {
     }
 
     S3Client {
-
         region = DEFAULT_S3_REGION_NAME
-        credentialsProvider = StaticCredentialsProvider(creds)
+        credentialsProvider = StaticCredentialsProvider(credentials)
         endpointUrl = Url.parse(serverUrl)
-    }
-        .use { s3 ->
+    }.use { s3 ->
             val response = s3.putObject(request)
             println("Tag information is ${response.eTag}")
         }
@@ -91,7 +88,7 @@ private fun unsafeClientBuilder(): OkHttpClient.Builder {
         // Create an OkHttpClient and configure it to ignore certificate errors
         return OkHttpClient.Builder()
             .sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
-            .hostnameVerifier(HostnameVerifier { _, _ -> true })
+            .hostnameVerifier { _, _ -> true }
     } catch (e: Exception) {
         throw RuntimeException(e)
     }
