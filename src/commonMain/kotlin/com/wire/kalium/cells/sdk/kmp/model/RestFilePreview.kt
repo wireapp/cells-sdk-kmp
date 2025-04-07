@@ -27,6 +27,7 @@ import kotlinx.serialization.encoding.*
  * @param bucket 
  * @param contentType 
  * @param dimension 
+ * @param error 
  * @param key 
  * @param preSignedGET 
  * @param processing 
@@ -40,6 +41,8 @@ data class RestFilePreview (
     @SerialName(value = "ContentType") val contentType: kotlin.String? = null,
 
     @SerialName(value = "Dimension") val dimension: kotlin.Int? = null,
+
+    @SerialName(value = "Error") val error: kotlin.Boolean? = null,
 
     @SerialName(value = "Key") val key: kotlin.String? = null,
 
