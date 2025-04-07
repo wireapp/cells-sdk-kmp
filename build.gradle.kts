@@ -62,7 +62,8 @@ kotlin {
         }
 
         appleMain {
-            dependsOn(sourceSets["commonMain"])
+            //dependsOn(sourceSets["commonMain"])
+            dependsOn(commonMain.get())
             dependencies {
                 implementation(libs.ktor.iosHttp)
             }
