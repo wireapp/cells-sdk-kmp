@@ -10,12 +10,13 @@ No license is granted to the Wire trademark and its associated logos, all of whi
 
 ## Overview
 
-We use the swagger specification that is maintained in [Cells](https://github.com/pydio/cells) main repository and [OpenAPI generator](https://openapi-generator.tech/docs/generators/kotlin/) to generate a standard Kotlin Multiplatform SDK.
-The generated code can be found in this module: it should not be _"manually"_ modified.
+We use the swagger specification that is maintained in [Cells](https://github.com/pydio/cells) main repository and [OpenAPI generator](https://openapi-generator.tech/docs/generators/kotlin/) to generate a standard Kotlin Multiplatform SDK: it should not be _"manually"_ modified.  
+The generated code can be found in this module.
 
 ## Usage
 
-We publish the library as a standard Artifact in [Maven Central via Sonatype](https://central.sonatype.com/search?q=cells-sdk-kmp), simply add the dependency to your pom.xml file: 
+We publish the library as a standard Artifact in [Maven Central via Sonatype](https://central.sonatype.com/search?q=cells-sdk-kmp).  
+Simply add the dependency to your pom.xml file: 
 
 ```pom
 <dependency>
