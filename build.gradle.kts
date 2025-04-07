@@ -25,6 +25,9 @@ kotlin {
         iosX64()
     }
 
+    iosX64 {
+    }
+
     sourceSets {
         commonMain {
             dependencies {
@@ -62,6 +65,7 @@ kotlin {
         }
 
         appleMain {
+            dependsOn(sourceSets["commonMain"])
             dependencies {
                 implementation(libs.ktor.iosHttp)
             }
