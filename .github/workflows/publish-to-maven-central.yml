@@ -11,7 +11,8 @@ on:
 jobs:
   publish:
 
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
+    runs-on: macos-latest
     # Define which environment we use to inject variables, see github repo >> settings >> environments
     environment: maven-central-publication
     if: github.repository == 'wireapp/cells-sdk-kmp'
