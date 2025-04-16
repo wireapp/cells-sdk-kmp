@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **operation** | [**MetaUpdateOp**](MetaUpdateOp.md) |  |  |
+| **operation** | [**RestMetaUpdateOp**](RestMetaUpdateOp.md) |  |  |
 | **userMeta** | [**RestUserMeta**](RestUserMeta.md) |  |  |
 
 

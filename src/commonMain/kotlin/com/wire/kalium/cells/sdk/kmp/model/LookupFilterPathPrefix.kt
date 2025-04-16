@@ -15,8 +15,6 @@
 
 package com.wire.kalium.cells.sdk.kmp.model
 
-import com.wire.kalium.cells.sdk.kmp.model.RestMetaUpdateOp
-import com.wire.kalium.cells.sdk.kmp.model.RestUserMeta
 
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
@@ -25,16 +23,16 @@ import kotlinx.serialization.encoding.*
 /**
  * 
  *
- * @param operation 
- * @param userMeta 
+ * @param exclude 
+ * @param prefix 
  */
 @Serializable
 
-data class RestMetaUpdate (
+data class LookupFilterPathPrefix (
 
-    @SerialName(value = "Operation") @Required val operation: RestMetaUpdateOp = RestMetaUpdateOp.PUT,
+    @SerialName(value = "Exclude") val exclude: kotlin.Boolean? = null,
 
-    @SerialName(value = "UserMeta") @Required val userMeta: RestUserMeta
+    @SerialName(value = "Prefix") val prefix: kotlin.String? = null
 
 ) {
 

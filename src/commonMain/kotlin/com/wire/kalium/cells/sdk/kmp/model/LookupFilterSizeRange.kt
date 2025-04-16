@@ -15,8 +15,6 @@
 
 package com.wire.kalium.cells.sdk.kmp.model
 
-import com.wire.kalium.cells.sdk.kmp.model.RestMetaUpdateOp
-import com.wire.kalium.cells.sdk.kmp.model.RestUserMeta
 
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
@@ -25,16 +23,16 @@ import kotlinx.serialization.encoding.*
 /**
  * 
  *
- * @param operation 
- * @param userMeta 
+ * @param max 
+ * @param min 
  */
 @Serializable
 
-data class RestMetaUpdate (
+data class LookupFilterSizeRange (
 
-    @SerialName(value = "Operation") @Required val operation: RestMetaUpdateOp = RestMetaUpdateOp.PUT,
+    @SerialName(value = "Max") val max: kotlin.String? = null,
 
-    @SerialName(value = "UserMeta") @Required val userMeta: RestUserMeta
+    @SerialName(value = "Min") val min: kotlin.String? = null
 
 ) {
 

@@ -7,6 +7,7 @@
 | **content** | **kotlin.String** |  |  [optional] |
 | **durationDate** | **kotlin.String** |  |  [optional] |
 | **etag** | **kotlin.String** |  |  [optional] |
+| **excludedPathPrefix** | **kotlin.collections.List&lt;kotlin.String&gt;** |  |  [optional] |
 | **extension** | **kotlin.String** |  |  [optional] |
 | **fileName** | **kotlin.String** |  |  [optional] |
 | **fileNameOrContent** | **kotlin.String** |  |  [optional] |

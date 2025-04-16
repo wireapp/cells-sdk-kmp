@@ -15,8 +15,7 @@
 
 package com.wire.kalium.cells.sdk.kmp.model
 
-import com.wire.kalium.cells.sdk.kmp.model.RestMetaUpdateOp
-import com.wire.kalium.cells.sdk.kmp.model.RestUserMeta
+import com.wire.kalium.cells.sdk.kmp.model.LookupFilterTextSearchIn
 
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
@@ -25,16 +24,16 @@ import kotlinx.serialization.encoding.*
 /**
  * 
  *
- * @param operation 
- * @param userMeta 
+ * @param searchIn 
+ * @param term 
  */
 @Serializable
 
-data class RestMetaUpdate (
+data class LookupFilterTextSearch (
 
-    @SerialName(value = "Operation") @Required val operation: RestMetaUpdateOp = RestMetaUpdateOp.PUT,
+    @SerialName(value = "SearchIn") val searchIn: LookupFilterTextSearchIn? = LookupFilterTextSearchIn.BaseName,
 
-    @SerialName(value = "UserMeta") @Required val userMeta: RestUserMeta
+    @SerialName(value = "Term") val term: kotlin.String? = null
 
 ) {
 

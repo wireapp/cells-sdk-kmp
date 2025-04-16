@@ -15,8 +15,7 @@
 
 package com.wire.kalium.cells.sdk.kmp.model
 
-import com.wire.kalium.cells.sdk.kmp.model.RestMetaUpdateOp
-import com.wire.kalium.cells.sdk.kmp.model.RestUserMeta
+import com.wire.kalium.cells.sdk.kmp.model.RestNodeLocator
 
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
@@ -25,16 +24,19 @@ import kotlinx.serialization.encoding.*
 /**
  * 
  *
- * @param operation 
- * @param userMeta 
+ * @param nodes 
+ * @param root 
+ * @param rootRelativeDepth 
  */
 @Serializable
 
-data class RestMetaUpdate (
+data class RestLookupScope (
 
-    @SerialName(value = "Operation") @Required val operation: RestMetaUpdateOp = RestMetaUpdateOp.PUT,
+    @SerialName(value = "Nodes") val nodes: kotlin.collections.List<RestNodeLocator>? = null,
 
-    @SerialName(value = "UserMeta") @Required val userMeta: RestUserMeta
+    @SerialName(value = "Root") val root: RestNodeLocator? = null,
+
+    @SerialName(value = "RootRelativeDepth") val rootRelativeDepth: kotlin.Int? = null
 
 ) {
 

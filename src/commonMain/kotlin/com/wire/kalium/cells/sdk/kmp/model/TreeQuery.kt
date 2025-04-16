@@ -28,6 +28,7 @@ import kotlinx.serialization.encoding.*
  * @param content 
  * @param durationDate 
  * @param etag 
+ * @param excludedPathPrefix 
  * @param extension 
  * @param fileName 
  * @param fileNameOrContent 
@@ -53,6 +54,8 @@ data class TreeQuery (
     @SerialName(value = "DurationDate") val durationDate: kotlin.String? = null,
 
     @SerialName(value = "ETag") val etag: kotlin.String? = null,
+
+    @SerialName(value = "ExcludedPathPrefix") val excludedPathPrefix: kotlin.collections.List<kotlin.String>? = null,
 
     @SerialName(value = "Extension") val extension: kotlin.String? = null,
 
