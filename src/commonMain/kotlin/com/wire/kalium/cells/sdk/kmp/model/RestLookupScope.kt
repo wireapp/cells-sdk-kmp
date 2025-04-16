@@ -25,8 +25,8 @@ import kotlinx.serialization.encoding.*
  * 
  *
  * @param nodes 
+ * @param recursive 
  * @param root 
- * @param rootRelativeDepth 
  */
 @Serializable
 
@@ -34,9 +34,9 @@ data class RestLookupScope (
 
     @SerialName(value = "Nodes") val nodes: kotlin.collections.List<RestNodeLocator>? = null,
 
-    @SerialName(value = "Root") val root: RestNodeLocator? = null,
+    @SerialName(value = "Recursive") val recursive: kotlin.Boolean? = null,
 
-    @SerialName(value = "RootRelativeDepth") val rootRelativeDepth: kotlin.Int? = null
+    @SerialName(value = "Root") val root: RestNodeLocator? = null
 
 ) {
 
