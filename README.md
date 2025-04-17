@@ -22,7 +22,7 @@ Simply add the dependency to your pom.xml file:
 <dependency>
     <groupId>com.wire</groupId>
     <artifactId>cells-sdk-kmp</artifactId>
-    <version>0.1.1-alpha07</version>
+    <version>0.1.1-alpha10</version>
 </dependency>
 ```
 
