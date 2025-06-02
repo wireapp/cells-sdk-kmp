@@ -561,7 +561,7 @@ Configure Bearer:
 
 <a id="listNamespaceValues"></a>
 # **listNamespaceValues**
-> RestNamespaceValuesResponse listNamespaceValues(namespace, operationOperation, operationValues)
+> RestNamespaceValuesResponse listNamespaceValues(namespace)
 
 List values for a given namespace
 
@@ -573,10 +573,8 @@ List values for a given namespace
 
 val apiInstance = NodeServiceApi()
 val namespace : kotlin.String = namespace_example // kotlin.String | List persisted values for this namespace
-val operationOperation : kotlin.String = operationOperation_example // kotlin.String | 
-val operationValues : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | 
 try {
-    val result : RestNamespaceValuesResponse = apiInstance.listNamespaceValues(namespace, operationOperation, operationValues)
+    val result : RestNamespaceValuesResponse = apiInstance.listNamespaceValues(namespace)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling NodeServiceApi#listNamespaceValues")
@@ -588,11 +586,9 @@ try {
 ```
 
 ### Parameters
-| **namespace** | **kotlin.String**| List persisted values for this namespace | |
-| **operationOperation** | **kotlin.String**|  | [default to PUT] [enum: PUT, DELETE] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **operationValues** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)|  | |
+| **namespace** | **kotlin.String**| List persisted values for this namespace | |
 
 ### Return type
 

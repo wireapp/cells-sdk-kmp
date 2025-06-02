@@ -495,31 +495,14 @@ open class NodeServiceApi : ApiClient {
     }
 
 
-
-    /**
-     * enum for parameter operationOperation
-     */
-    @Serializable
-    enum class OperationOperationListNamespaceValues(val value: kotlin.String) {
-        
-        @SerialName(value = "PUT")
-        PUT("PUT"),
-        
-        @SerialName(value = "DELETE")
-        DELETE("DELETE")
-        
-    }
-
     /**
      * List values for a given namespace
      * 
      * @param namespace List persisted values for this namespace
-     * @param operationOperation  (default to PUT)
-     * @param operationValues 
      * @return RestNamespaceValuesResponse
      */
     @Suppress("UNCHECKED_CAST")
-    open suspend fun listNamespaceValues(namespace: kotlin.String, operationOperation: OperationOperationListNamespaceValues = OperationOperationListNamespaceValues.PUT, operationValues: kotlin.collections.List<kotlin.String>): HttpResponse<RestNamespaceValuesResponse> {
+    open suspend fun listNamespaceValues(namespace: kotlin.String): HttpResponse<RestNamespaceValuesResponse> {
 
         val localVariableAuthNames = listOf<String>("Bearer")
 
@@ -527,8 +510,6 @@ open class NodeServiceApi : ApiClient {
             io.ktor.client.utils.EmptyContent
 
         val localVariableQuery = mutableMapOf<String, List<String>>()
-        operationOperation?.apply { localVariableQuery["Operation.Operation"] = listOf("${ operationOperation.value }") }
-        operationValues?.apply { localVariableQuery["Operation.Values"] = toMultiValue(this, "multi") }
         val localVariableHeaders = mutableMapOf<String, String>()
 
         val localVariableConfig = RequestConfig<kotlin.Any?>(
