@@ -7,7 +7,7 @@ pluginManagement {
     }
 }
 plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "0.9.0"
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
 rootProject.name = "cells-sdk-kmp"
@@ -20,7 +20,7 @@ dependencyResolutionManagement {
 
     versionCatalogs {
         create("awssdk") {
-            from("aws.sdk.kotlin:version-catalog:1.3.112")
+            from("aws.sdk.kotlin:version-catalog:1.4.125")
         }
     }
 }

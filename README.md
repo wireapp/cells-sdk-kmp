@@ -28,7 +28,7 @@ Simply add the dependency to your pom.xml file:
 
 ## Tests 
 
-We provide a few unit test to showcase the use of the API.
+We provide a few unit test to show case the use of the API.
 
 To run them, simply define your target server URL and a PAT for a user that has access in RW to a workspace that has versioning enabled like this:
 

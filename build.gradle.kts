@@ -62,8 +62,7 @@ kotlin {
         }
 
         appleMain {
-            //dependsOn(sourceSets["commonMain"])
-            dependsOn(commonMain.get())
+            /* dependsOn(commonMain.get()) */
             dependencies {
                 implementation(libs.ktor.iosHttp)
             }
@@ -112,7 +111,7 @@ tasks.withType<Test> {
 //    configure(KotlinMultiplatform(
 //        // configures the -javadoc artifact, possible values:
 //        // - `JavadocJar.None()` don't publish this artifact
-//        // - `JavadocJar.Empty()` publish an emprt jar
+//        // - `JavadocJar.Empty()` publish an empty jar
 //        // - `JavadocJar.Dokka("dokkaHtml")` when using Kotlin with Dokka, where `dokkaHtml` is the name of the Dokka task that should be used as input
 //        // javadocJar = JavadocJar.Dokka("dokkaHtml"),
 //        javadocJar = JavadocJar.Empty(),
