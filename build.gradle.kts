@@ -19,11 +19,15 @@ repositories {
 
 kotlin {
     jvm()
-    // FIXME ugly trick to enable both local gradle build and release github action.
-    //  Do this more cleanly
-    if (System.getenv("SIGN_ARTIFACTS") == "true") {
-        iosX64()
-    }
+
+    iosArm64()
+    iosSimulatorArm64()
+    macosArm64()
+
+    // These two can be removed Soon™, as they are only required if you want to support Intel-based Macs,
+    // which most projects have already dropped support for.
+    iosX64()
+    macosX64()
 
     sourceSets {
         commonMain {
