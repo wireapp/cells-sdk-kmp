@@ -16,6 +16,7 @@
 package com.wire.kalium.cells.sdk.kmp.model
 
 import com.wire.kalium.cells.sdk.kmp.model.StatusFilterDeletedStatus
+import com.wire.kalium.cells.sdk.kmp.model.StatusFilterDraftStatus
 
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
@@ -25,6 +26,7 @@ import kotlinx.serialization.encoding.*
  * 
  *
  * @param deleted 
+ * @param draft 
  * @param hasPublicLink 
  * @param isBookmarked 
  * @param isDraft 
@@ -34,6 +36,8 @@ import kotlinx.serialization.encoding.*
 data class LookupFilterStatusFilter (
 
     @SerialName(value = "Deleted") val deleted: StatusFilterDeletedStatus? = StatusFilterDeletedStatus.Not,
+
+    @SerialName(value = "Draft") val draft: StatusFilterDraftStatus? = StatusFilterDraftStatus.DraftNot,
 
     @SerialName(value = "HasPublicLink") val hasPublicLink: kotlin.Boolean? = null,
 

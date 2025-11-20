@@ -21,34 +21,19 @@ import kotlinx.serialization.*
 /**
  * 
  *
- * Values: WithMetaDefaults,WithMetaCoreOnly,WithMetaNone,WithVersionsAll,WithVersionsDraft,WithVersionsPublished,WithPreSignedURLs,WithEditorURLs
+ * Values: DraftNot,DraftOnly,DraftAny
  */
 @Serializable
-enum class RestFlag(val value: kotlin.String) {
+enum class StatusFilterDraftStatus(val value: kotlin.String) {
 
-    @SerialName(value = "WithMetaDefaults")
-    WithMetaDefaults("WithMetaDefaults"),
+    @SerialName(value = "DraftNot")
+    DraftNot("DraftNot"),
 
-    @SerialName(value = "WithMetaCoreOnly")
-    WithMetaCoreOnly("WithMetaCoreOnly"),
+    @SerialName(value = "DraftOnly")
+    DraftOnly("DraftOnly"),
 
-    @SerialName(value = "WithMetaNone")
-    WithMetaNone("WithMetaNone"),
-
-    @SerialName(value = "WithVersionsAll")
-    WithVersionsAll("WithVersionsAll"),
-
-    @SerialName(value = "WithVersionsDraft")
-    WithVersionsDraft("WithVersionsDraft"),
-
-    @SerialName(value = "WithVersionsPublished")
-    WithVersionsPublished("WithVersionsPublished"),
-
-    @SerialName(value = "WithPreSignedURLs")
-    WithPreSignedURLs("WithPreSignedURLs"),
-
-    @SerialName(value = "WithEditorURLs")
-    WithEditorURLs("WithEditorURLs");
+    @SerialName(value = "DraftAny")
+    DraftAny("DraftAny");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -63,12 +48,12 @@ enum class RestFlag(val value: kotlin.String) {
         /**
          * Converts the provided [data] to a [String] on success, null otherwise.
          */
-        fun encode(data: kotlin.Any?): kotlin.String? = if (data is RestFlag) "$data" else null
+        fun encode(data: kotlin.Any?): kotlin.String? = if (data is StatusFilterDraftStatus) "$data" else null
 
         /**
-         * Returns a valid [RestFlag] for [data], null otherwise.
+         * Returns a valid [StatusFilterDraftStatus] for [data], null otherwise.
          */
-        fun decode(data: kotlin.Any?): RestFlag? = data?.let {
+        fun decode(data: kotlin.Any?): StatusFilterDraftStatus? = data?.let {
           val normalizedData = "$it".lowercase()
           values().firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()

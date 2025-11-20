@@ -12,6 +12,7 @@
 | **contentType** | **kotlin.String** |  |  [optional] |
 | **contextWorkspace** | [**RestContextWorkspace**](RestContextWorkspace.md) |  |  [optional] |
 | **dataSourceFeatures** | [**RestDataSourceFeatures**](RestDataSourceFeatures.md) |  |  [optional] |
+| **editorURLs** | [**kotlin.collections.Map&lt;kotlin.String, RestPreSignedURL&gt;**](RestPreSignedURL.md) |  |  [optional] |
 | **folderMeta** | [**kotlin.collections.List&lt;RestCountMeta&gt;**](RestCountMeta.md) |  |  [optional] |
 | **hashingMethod** | **kotlin.String** |  |  [optional] |
 | **imageMeta** | [**RestImageMeta**](RestImageMeta.md) |  |  [optional] |

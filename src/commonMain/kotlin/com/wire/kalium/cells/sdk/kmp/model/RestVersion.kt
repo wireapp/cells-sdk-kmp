@@ -15,6 +15,8 @@
 
 package com.wire.kalium.cells.sdk.kmp.model
 
+import com.wire.kalium.cells.sdk.kmp.model.RestFilePreview
+import com.wire.kalium.cells.sdk.kmp.model.RestPreSignedURL
 
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
@@ -28,10 +30,13 @@ import kotlinx.serialization.encoding.*
  * @param description 
  * @param draft 
  * @param etag 
+ * @param editorURLs 
+ * @param filePreviews 
  * @param isHead 
  * @param mtime 
  * @param ownerName 
  * @param ownerUuid 
+ * @param preSignedGET 
  * @param propertySize 
  */
 @Serializable
@@ -48,6 +53,10 @@ data class RestVersion (
 
     @SerialName(value = "ETag") val etag: kotlin.String? = null,
 
+    @SerialName(value = "EditorURLs") val editorURLs: kotlin.collections.Map<kotlin.String, RestPreSignedURL>? = null,
+
+    @SerialName(value = "FilePreviews") val filePreviews: kotlin.collections.List<RestFilePreview>? = null,
+
     @SerialName(value = "IsHead") val isHead: kotlin.Boolean? = null,
 
     @SerialName(value = "MTime") val mtime: kotlin.String? = null,
@@ -55,6 +64,8 @@ data class RestVersion (
     @SerialName(value = "OwnerName") val ownerName: kotlin.String? = null,
 
     @SerialName(value = "OwnerUuid") val ownerUuid: kotlin.String? = null,
+
+    @SerialName(value = "PreSignedGET") val preSignedGET: RestPreSignedURL? = null,
 
     @SerialName(value = "Size") val propertySize: kotlin.String? = null
 

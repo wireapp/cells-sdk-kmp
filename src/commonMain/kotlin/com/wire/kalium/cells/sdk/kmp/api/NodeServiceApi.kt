@@ -427,15 +427,48 @@ open class NodeServiceApi : ApiClient {
     }
 
 
+
+    /**
+     * enum for parameter flags
+     */
+    @Serializable
+    enum class FlagsGetByUuid(val value: kotlin.String) {
+        
+        @SerialName(value = "WithMetaDefaults")
+        WithMetaDefaults("WithMetaDefaults"),
+        
+        @SerialName(value = "WithMetaCoreOnly")
+        WithMetaCoreOnly("WithMetaCoreOnly"),
+        
+        @SerialName(value = "WithMetaNone")
+        WithMetaNone("WithMetaNone"),
+        
+        @SerialName(value = "WithVersionsAll")
+        WithVersionsAll("WithVersionsAll"),
+        
+        @SerialName(value = "WithVersionsDraft")
+        WithVersionsDraft("WithVersionsDraft"),
+        
+        @SerialName(value = "WithVersionsPublished")
+        WithVersionsPublished("WithVersionsPublished"),
+        
+        @SerialName(value = "WithPreSignedURLs")
+        WithPreSignedURLs("WithPreSignedURLs"),
+        
+        @SerialName(value = "WithEditorURLs")
+        WithEditorURLs("WithEditorURLs")
+        
+    }
+
     /**
      * Load a node by its Uuid
      * 
      * @param uuid 
-     * @param path  (optional)
+     * @param flags  (optional)
      * @return RestNode
      */
     @Suppress("UNCHECKED_CAST")
-    open suspend fun getByUuid(uuid: kotlin.String, path: kotlin.String? = null): HttpResponse<RestNode> {
+    open suspend fun getByUuid(uuid: kotlin.String, flags: kotlin.collections.List<FlagsGetByUuid>? = null): HttpResponse<RestNode> {
 
         val localVariableAuthNames = listOf<String>("Bearer")
 
@@ -443,7 +476,7 @@ open class NodeServiceApi : ApiClient {
             io.ktor.client.utils.EmptyContent
 
         val localVariableQuery = mutableMapOf<String, List<String>>()
-        path?.apply { localVariableQuery["Path"] = listOf("$path") }
+        flags?.apply { localVariableQuery["Flags"] = toMultiValue(this, "multi") }
         val localVariableHeaders = mutableMapOf<String, String>()
 
         val localVariableConfig = RequestConfig<kotlin.Any?>(

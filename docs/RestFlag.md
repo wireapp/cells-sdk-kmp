@@ -18,5 +18,7 @@
 
     * `WithPreSignedURLs` (value: `"WithPreSignedURLs"`)
 
+    * `WithEditorURLs` (value: `"WithEditorURLs"`)
+
 
 

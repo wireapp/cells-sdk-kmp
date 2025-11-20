@@ -47,6 +47,7 @@ import kotlinx.serialization.encoding.*
  * @param contentType 
  * @param contextWorkspace 
  * @param dataSourceFeatures 
+ * @param editorURLs 
  * @param folderMeta 
  * @param hashingMethod 
  * @param imageMeta 
@@ -87,6 +88,8 @@ data class RestNode (
     @SerialName(value = "ContextWorkspace") val contextWorkspace: RestContextWorkspace? = null,
 
     @SerialName(value = "DataSourceFeatures") val dataSourceFeatures: RestDataSourceFeatures? = null,
+
+    @SerialName(value = "EditorURLs") val editorURLs: kotlin.collections.Map<kotlin.String, RestPreSignedURL>? = null,
 
     @SerialName(value = "FolderMeta") val folderMeta: kotlin.collections.List<RestCountMeta>? = null,
 

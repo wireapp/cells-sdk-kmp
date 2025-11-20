@@ -465,7 +465,7 @@ Configure Bearer:
 
 <a id="getByUuid"></a>
 # **getByUuid**
-> RestNode getByUuid(uuid, path)
+> RestNode getByUuid(uuid, flags)
 
 Load a node by its Uuid
 
@@ -477,9 +477,9 @@ Load a node by its Uuid
 
 val apiInstance = NodeServiceApi()
 val uuid : kotlin.String = uuid_example // kotlin.String | 
-val path : kotlin.String = path_example // kotlin.String | 
+val flags : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | 
 try {
-    val result : RestNode = apiInstance.getByUuid(uuid, path)
+    val result : RestNode = apiInstance.getByUuid(uuid, flags)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling NodeServiceApi#getByUuid")
@@ -494,7 +494,7 @@ try {
 | **uuid** | **kotlin.String**|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **path** | **kotlin.String**|  | [optional] |
+| **flags** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)|  | [optional] [enum: WithMetaDefaults, WithMetaCoreOnly, WithMetaNone, WithVersionsAll, WithVersionsDraft, WithVersionsPublished, WithPreSignedURLs, WithEditorURLs] |
 
 ### Return type
 
