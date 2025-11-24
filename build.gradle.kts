@@ -30,6 +30,12 @@ kotlin {
     macosX64()
 
     sourceSets {
+        
+        // We must explicitly opt-in to use this experimental API
+        all {
+            languageSettings.optIn("kotlin.time.ExperimentalTime")
+        }
+
         commonMain {
             dependencies {
                 api(libs.ktor.client.core)
