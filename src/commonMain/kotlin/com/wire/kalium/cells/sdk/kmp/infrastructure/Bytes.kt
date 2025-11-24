@@ -1,34 +1,19 @@
 package com.wire.kalium.cells.sdk.kmp.infrastructure
 
-import io.ktor.util.decodeBase64Bytes
-import io.ktor.util.encodeBase64
-import io.ktor.utils.io.core.buildPacket
-import io.ktor.utils.io.core.writeFully
-import io.ktor.utils.io.core.writeText
-import kotlinx.io.readByteArray
-import kotlin.experimental.and
+import kotlin.io.encoding.Base64
 
 private val digits = "0123456789abcdef".toCharArray()
-private const val BASE64_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-private const val BASE64_MASK: Byte = 0x3f
-private const val BASE64_PAD = '='
-private val BASE64_INVERSE_ALPHABET = IntArray(256) { BASE64_ALPHABET.indexOf(it.toChar()) }
 
 private fun String.toCharArray(): CharArray = CharArray(length) { get(it) }
-private fun ByteArray.clearFrom(from: Int) = (from until size).forEach { this[it] = 0 }
-private fun Int.toBase64(): Char = BASE64_ALPHABET[this]
-private fun Byte.fromBase64(): Byte = BASE64_INVERSE_ALPHABET[toInt() and 0xff].toByte() and BASE64_MASK
-internal fun ByteArray.encodeBase64(): String = buildPacket { writeFully(this@encodeBase64) }.encodeBase64()
-internal fun String.decodeBase64Bytes(): ByteArray =
-    buildPacket { writeText(dropLastWhile { it == BASE64_PAD }) }.decodeBase64Bytes()
-        .readByteArray()
+internal fun ByteArray.encodeBase64(): String = Base64.encode(this)
+internal fun String.decodeBase64Bytes(): ByteArray = Base64.decode(this)
 
 /**
  * Encode [bytes] as a HEX string with no spaces, newlines and `0x` prefixes.
  *
  * Taken from https://github.com/ktorio/ktor/blob/master/ktor-utils/common/src/io/ktor/util/Crypto.kt
  */
-internal fun hex(bytes: ByteArray): String {
+fun hex(bytes: ByteArray): String {
     val result = CharArray(bytes.size * 2)
     var resultIndex = 0
     val digits = digits
