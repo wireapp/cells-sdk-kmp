@@ -3,12 +3,9 @@ package com.wire.kalium.cells.sdk.kmp.infrastructure
 import io.ktor.util.decodeBase64Bytes
 import io.ktor.util.encodeBase64
 import io.ktor.utils.io.core.buildPacket
-import io.ktor.utils.io.core.readBytes
 import io.ktor.utils.io.core.writeFully
 import io.ktor.utils.io.core.writeText
-import kotlinx.io.Buffer
 import kotlinx.io.readByteArray
-import kotlinx.io.writeString
 import kotlin.experimental.and
 
 private val digits = "0123456789abcdef".toCharArray()
