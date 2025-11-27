@@ -31,6 +31,7 @@ import kotlinx.serialization.encoding.*
  * @param draft 
  * @param etag 
  * @param editorURLs 
+ * @param editorURLsKeys 
  * @param filePreviews 
  * @param isHead 
  * @param mtime 
@@ -54,6 +55,8 @@ data class RestVersion (
     @SerialName(value = "ETag") val etag: kotlin.String? = null,
 
     @SerialName(value = "EditorURLs") val editorURLs: kotlin.collections.Map<kotlin.String, RestPreSignedURL>? = null,
+
+    @SerialName(value = "EditorURLsKeys") val editorURLsKeys: kotlin.collections.List<kotlin.String>? = null,
 
     @SerialName(value = "FilePreviews") val filePreviews: kotlin.collections.List<RestFilePreview>? = null,
 

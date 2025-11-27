@@ -10,6 +10,7 @@
 | **draft** | **kotlin.Boolean** |  |  [optional] |
 | **etag** | **kotlin.String** |  |  [optional] |
 | **editorURLs** | [**kotlin.collections.Map&lt;kotlin.String, RestPreSignedURL&gt;**](RestPreSignedURL.md) |  |  [optional] |
+| **editorURLsKeys** | **kotlin.collections.List&lt;kotlin.String&gt;** |  |  [optional] |
 | **filePreviews** | [**kotlin.collections.List&lt;RestFilePreview&gt;**](RestFilePreview.md) |  |  [optional] |
 | **isHead** | **kotlin.Boolean** |  |  [optional] |
 | **mtime** | **kotlin.String** |  |  [optional] |
