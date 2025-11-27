@@ -15,6 +15,7 @@
 
 package com.wire.kalium.cells.sdk.kmp.model
 
+import com.wire.kalium.cells.sdk.kmp.model.RestFlag
 import com.wire.kalium.cells.sdk.kmp.model.RestVersionsTypes
 
 import kotlinx.serialization.*
@@ -25,6 +26,7 @@ import kotlinx.serialization.encoding.*
  * 
  *
  * @param filterBy 
+ * @param flags 
  * @param limit 
  * @param offset 
  * @param sortDirDesc 
@@ -35,6 +37,8 @@ import kotlinx.serialization.encoding.*
 data class RestNodeVersionsFilter (
 
     @SerialName(value = "FilterBy") val filterBy: RestVersionsTypes? = RestVersionsTypes.VersionsAll,
+
+    @SerialName(value = "Flags") val flags: kotlin.collections.List<RestFlag>? = null,
 
     @SerialName(value = "Limit") val limit: kotlin.String? = null,
 
