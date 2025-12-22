@@ -15,12 +15,12 @@
 | **bcc** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
 | **bto** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
 | **cc** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
-| **closed** | [**kotlin.time.Instant**](kotlin.time.Instant.md) |  |  [optional] |
+| **closed** | [**kotlinx.datetime.Instant**](kotlinx.datetime.Instant.md) |  |  [optional] |
 | **content** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
 | **current** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
-| **deleted** | [**kotlin.time.Instant**](kotlin.time.Instant.md) |  |  [optional] |
-| **duration** | [**kotlin.time.Instant**](kotlin.time.Instant.md) |  |  [optional] |
-| **endTime** | [**kotlin.time.Instant**](kotlin.time.Instant.md) |  |  [optional] |
+| **deleted** | [**kotlinx.datetime.Instant**](kotlinx.datetime.Instant.md) |  |  [optional] |
+| **duration** | [**kotlinx.datetime.Instant**](kotlinx.datetime.Instant.md) |  |  [optional] |
+| **endTime** | [**kotlinx.datetime.Instant**](kotlinx.datetime.Instant.md) |  |  [optional] |
 | **first** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
 | **formerType** | [**ActivityObjectType**](ActivityObjectType.md) |  |  [optional] |
 | **generator** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
@@ -47,13 +47,13 @@
 | **partOf** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
 | **prev** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
 | **preview** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
-| **published** | [**kotlin.time.Instant**](kotlin.time.Instant.md) |  |  [optional] |
+| **published** | [**kotlinx.datetime.Instant**](kotlinx.datetime.Instant.md) |  |  [optional] |
 | **radius** | **kotlin.Float** |  |  [optional] |
 | **rel** | **kotlin.String** |  |  [optional] |
 | **relationship** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
 | **replies** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
 | **result** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
-| **startTime** | [**kotlin.time.Instant**](kotlin.time.Instant.md) |  |  [optional] |
+| **startTime** | [**kotlinx.datetime.Instant**](kotlinx.datetime.Instant.md) |  |  [optional] |
 | **subject** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
 | **summary** | **kotlin.String** |  |  [optional] |
 | **tag** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
@@ -62,7 +62,7 @@
 | **totalItems** | **kotlin.Int** |  |  [optional] |
 | **type** | [**ActivityObjectType**](ActivityObjectType.md) |  |  [optional] |
 | **units** | **kotlin.String** |  |  [optional] |
-| **updated** | [**kotlin.time.Instant**](kotlin.time.Instant.md) |  |  [optional] |
+| **updated** | [**kotlinx.datetime.Instant**](kotlinx.datetime.Instant.md) |  |  [optional] |
 | **url** | [**ActivityObject**](ActivityObject.md) |  |  [optional] |
 | **width** | **kotlin.Int** |  |  [optional] |
 
