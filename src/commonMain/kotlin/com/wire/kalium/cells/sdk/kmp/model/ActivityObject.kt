@@ -112,17 +112,17 @@ data class ActivityObject (
 
     @SerialName(value = "cc") val cc: ActivityObject? = null,
 
-    @SerialName(value = "closed") val closed: kotlin.time.Instant? = null,
+    @SerialName(value = "closed") val closed: kotlinx.datetime.Instant? = null,
 
     @SerialName(value = "content") val content: ActivityObject? = null,
 
     @SerialName(value = "current") val current: ActivityObject? = null,
 
-    @SerialName(value = "deleted") val deleted: kotlin.time.Instant? = null,
+    @SerialName(value = "deleted") val deleted: kotlinx.datetime.Instant? = null,
 
-    @SerialName(value = "duration") val duration: kotlin.time.Instant? = null,
+    @SerialName(value = "duration") val duration: kotlinx.datetime.Instant? = null,
 
-    @SerialName(value = "endTime") val endTime: kotlin.time.Instant? = null,
+    @SerialName(value = "endTime") val endTime: kotlinx.datetime.Instant? = null,
 
     @SerialName(value = "first") val first: ActivityObject? = null,
 
@@ -176,7 +176,7 @@ data class ActivityObject (
 
     @SerialName(value = "preview") val preview: ActivityObject? = null,
 
-    @SerialName(value = "published") val published: kotlin.time.Instant? = null,
+    @SerialName(value = "published") val published: kotlinx.datetime.Instant? = null,
 
     @SerialName(value = "radius") val radius: kotlin.Float? = null,
 
@@ -188,7 +188,7 @@ data class ActivityObject (
 
     @SerialName(value = "result") val result: ActivityObject? = null,
 
-    @SerialName(value = "startTime") val startTime: kotlin.time.Instant? = null,
+    @SerialName(value = "startTime") val startTime: kotlinx.datetime.Instant? = null,
 
     @SerialName(value = "subject") val subject: ActivityObject? = null,
 
@@ -206,7 +206,7 @@ data class ActivityObject (
 
     @SerialName(value = "units") val units: kotlin.String? = null,
 
-    @SerialName(value = "updated") val updated: kotlin.time.Instant? = null,
+    @SerialName(value = "updated") val updated: kotlinx.datetime.Instant? = null,
 
     @SerialName(value = "url") val url: ActivityObject? = null,
 
