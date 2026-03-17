@@ -1,4 +1,6 @@
 import java.util.Properties
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -19,6 +21,10 @@ repositories {
 
 kotlin {
     jvm()
+    js(IR) {
+        browser()
+        binaries.library()
+    }
 
     iosArm64()
     iosSimulatorArm64()
@@ -71,6 +77,19 @@ kotlin {
             }
         }
 
+        jsMain {
+            dependencies {
+                implementation(libs.ktor.client.js)
+            }
+        }
+
+        jsTest {
+            dependencies {
+                implementation(libs.kotlin.test)
+                implementation(libs.ktor.client.mock)
+            }
+        }
+
         appleMain {
             /* dependsOn(commonMain.get()) */
             dependencies {
@@ -106,13 +125,51 @@ tasks.withType<Jar>().configureEach {
 }
 
 tasks.withType<Test> {
-    val properties = Properties().apply {
-        rootProject.file("local.properties").reader().use(::load)
+    val properties = Properties()
+    val localProperties = rootProject.file("local.properties")
+    if (localProperties.exists()) {
+        localProperties.reader().use(properties::load)
     }
     val serverURL = properties["test.target_server_url"] ?: ""
     val pat = properties["test.target_server_pat"] ?: ""
     environment("TARGET_SERVER_URL", serverURL)
     environment("TARGET_SERVER_PAT", pat)
+}
+
+fun patchJsModuleMetadata(file: File) {
+    if (!file.exists()) return
+
+    val json = JsonSlurper().parse(file) as MutableMap<*, *>
+    @Suppress("UNCHECKED_CAST")
+    val variants = json["variants"] as? List<MutableMap<String, Any?>> ?: return
+
+    variants.forEach { variant ->
+        val name = variant["name"] as? String ?: return@forEach
+        if (!name.startsWith("js")) return@forEach
+
+        @Suppress("UNCHECKED_CAST")
+        val attributes = variant.getOrPut("attributes") {
+            mutableMapOf<String, Any?>()
+        } as MutableMap<String, Any?>
+
+        if (name.contains("ApiElements") || name.contains("RuntimeElements")) {
+            attributes["org.jetbrains.kotlin.klib.packaging"] = "non-packed"
+        }
+    }
+
+    file.writeText(JsonOutput.prettyPrint(JsonOutput.toJson(json)))
+}
+
+tasks.named("generateMetadataFileForJsPublication").configure {
+    doLast {
+        patchJsModuleMetadata(layout.buildDirectory.file("publications/js/module.json").get().asFile)
+    }
+}
+
+tasks.named("generateMetadataFileForKotlinMultiplatformPublication").configure {
+    doLast {
+        patchJsModuleMetadata(layout.buildDirectory.file("publications/kotlinMultiplatform/module.json").get().asFile)
+    }
 }
 
 // Useless for now
