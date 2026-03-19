@@ -24,21 +24,34 @@ import kotlinx.serialization.encoding.*
 /**
  * 
  *
+ * @param description 
+ * @param enforceDefault 
+ * @param fieldType 
  * @param indexable 
  * @param jsonDefinition 
+ * @param jsonSchema 
  * @param label 
  * @param namespace 
  * @param order 
  * @param policies 
  * @param policiesContextEditable 
+ * @param promptOnUpload 
  */
 @Serializable
 
 data class IdmUserMetaNamespace (
 
+    @SerialName(value = "Description") val description: kotlin.String? = null,
+
+    @SerialName(value = "EnforceDefault") val enforceDefault: kotlin.Boolean? = null,
+
+    @SerialName(value = "FieldType") val fieldType: kotlin.String? = null,
+
     @SerialName(value = "Indexable") val indexable: kotlin.Boolean? = null,
 
     @SerialName(value = "JsonDefinition") val jsonDefinition: kotlin.String? = null,
+
+    @SerialName(value = "JsonSchema") val jsonSchema: kotlin.String? = null,
 
     @SerialName(value = "Label") val label: kotlin.String? = null,
 
@@ -48,7 +61,9 @@ data class IdmUserMetaNamespace (
 
     @SerialName(value = "Policies") val policies: kotlin.collections.List<ServiceResourcePolicy>? = null,
 
-    @SerialName(value = "PoliciesContextEditable") val policiesContextEditable: kotlin.Boolean? = null
+    @SerialName(value = "PoliciesContextEditable") val policiesContextEditable: kotlin.Boolean? = null,
+
+    @SerialName(value = "PromptOnUpload") val promptOnUpload: kotlin.Boolean? = null
 
 ) {
 
