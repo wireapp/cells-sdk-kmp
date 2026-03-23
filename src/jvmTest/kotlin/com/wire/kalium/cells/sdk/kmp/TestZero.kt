@@ -22,7 +22,7 @@ class TestZero {
     private val dispatcher = UnconfinedTestDispatcher()
 
     @Test
-    fun testIt() = runTest(dispatcher) {
+    fun createsLooksUpAndFetchesNodeByUuid() = runTest(dispatcher) {
 
         val serverUrl = System.getenv("TARGET_SERVER_URL")
         val pat = System.getenv("TARGET_SERVER_PAT")

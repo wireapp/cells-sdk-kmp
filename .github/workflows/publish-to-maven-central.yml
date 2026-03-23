@@ -46,6 +46,9 @@ jobs:
       - name: Configure Gradle
         run: touch ./local.properties
 
+      - name: Verify JS
+        run: ./gradlew compileKotlinJs
+
 #      - name: Publish
 #        run: ./gradlew publishToMavenLocal
 #        env:
